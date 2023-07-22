@@ -4,7 +4,6 @@ import { Context } from "../../context/Context";
 import { ICart } from "../../interface/cart";
 import {AddCircleOutline, DeleteOutline, RemoveCircleOutline} from '@mui/icons-material';
 import { formatCurrency } from "../../utils/formatCurrency";
-import mongoose from "mongoose";
 
 interface Props {
     cartItem: ICart;
@@ -24,11 +23,11 @@ export const CartItem: React.FC<Props> = ({cartItem}) => {
             <div className="cartItem_icons">
                 <AddCircleOutline 
                     className="cartItem_icon increment"
-                    onClick={() => cartDispatch({type: "CHANGE_CART_QUANTITY", payload: {productId: prod?._id as mongoose.Types.ObjectId, quantity: cartItem.quantity < Number(prod?.currentStock) ? Number(cartItem.quantity + 1) : Number(prod?.currentStock)}})}
+                    onClick={() => cartDispatch({type: "CHANGE_CART_QUANTITY", payload: {productId: prod?._id as any, quantity: cartItem.quantity < Number(prod?.currentStock) ? Number(cartItem.quantity + 1) : Number(prod?.currentStock)}})}
                 />
                 <RemoveCircleOutline 
                     className="cartItem_icon decrement"
-                    onClick={() => cartDispatch({type: "CHANGE_CART_QUANTITY", payload: {productId: prod?._id as mongoose.Types.ObjectId, quantity: cartItem.quantity > 1 ? cartItem.quantity - 1 : 1}})}
+                    onClick={() => cartDispatch({type: "CHANGE_CART_QUANTITY", payload: {productId: prod?._id as any, quantity: cartItem.quantity > 1 ? cartItem.quantity - 1 : 1}})}
                 />
                 <DeleteOutline 
                     className="cartItem_icon remove"

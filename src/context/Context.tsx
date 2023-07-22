@@ -1,6 +1,5 @@
 import {useState, useEffect, useReducer, createContext} from "react";
 import { CartReducer, IReducer, initialiseCart } from "./CartReducer";
-import {User} from '../../../backend/src/resources/user/user.model';
 import { IAddress } from "../interface/address";
 import { ProductReducer, productReducerInitialState } from "./ProductReducer";
 import { useEffectOnce } from "../hooks/useEffectOnce";
@@ -12,7 +11,7 @@ interface ContextProviderProps {
 const useValue = () => {
     const baseUrl = import.meta.env.VITE_BACKEND_URL;
     const [products, setProducts] = useState<any[]>([]);
-    const [user, setUser] = useState<User | undefined>(undefined);
+    const [user, setUser] = useState<any>(undefined);
 
     // Reducers
     const [cartState, cartDispatch] = useReducer(CartReducer, initialiseCart());

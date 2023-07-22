@@ -2,7 +2,6 @@ import "./CartItem.css";
 import React, {useContext, useState} from "react";
 import { Context } from "../../context/Context";
 import { ICart } from "../../interface/cart";
-import { Product } from "../../../../backend/src/resources/product/product.model";
 import {AddCircleOutline, DeleteOutline, RemoveCircleOutline} from '@mui/icons-material';
 import { formatCurrency } from "../../utils/formatCurrency";
 import mongoose from "mongoose";
@@ -33,7 +32,7 @@ export const CartItem: React.FC<Props> = ({cartItem}) => {
                 />
                 <DeleteOutline 
                     className="cartItem_icon remove"
-                    onClick={() => cartDispatch({type: "REMOVE_FROM_CART", payload: prod as Product})}
+                    onClick={() => cartDispatch({type: "REMOVE_FROM_CART", payload: prod as any})}
                 />
             </div>
             <div className="cartItem_price">{formatCurrency((Number(prod?.price))/100 * cartItem.quantity)}</div>
